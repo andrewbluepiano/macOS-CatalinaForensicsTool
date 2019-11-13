@@ -1,5 +1,5 @@
 # CatalinaForensicsTool
-![Screen Shot](https://imgur.com/BQYpGkC)
+![Screen Shot](https://i.imgur.com/BQYpGkC.png)
 A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
 Heavily relies on AppleScriptObjC for operation. 
