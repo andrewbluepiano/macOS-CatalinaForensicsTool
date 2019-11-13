@@ -1,5 +1,4 @@
 # CatalinaForensicsTool
-![Screen Shot](https://i.imgur.com/BQYpGkC.png)
 A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
 Heavily relies on AppleScriptObjC for operation. 
@@ -12,3 +11,6 @@ This is not indended to be a consumer / production app, as its operation violate
 1. Compile it yourself!
 2. Download the release .app and run the following command on the file:
 xattr -cr CatalinaExporter.app
+
+# Screenshot of Current State
+![Screen Shot](https://i.imgur.com/BQYpGkC.png)
