@@ -16,7 +16,8 @@ int main(int argc, const char * argv[]) {
     }
     [[NSBundle mainBundle] loadAppleScriptObjectiveCScripts];
     ArtifactFinder *stuff = [[NSClassFromString(@"ArtifactFinder") alloc] init];
-//    [stuff setup];
+    
+//    [stuff setVars];
 //    NSNumber *result = [stuff checkPasswd: @"caT"];
 //    NSLog(@"Result: %@", result);
     
