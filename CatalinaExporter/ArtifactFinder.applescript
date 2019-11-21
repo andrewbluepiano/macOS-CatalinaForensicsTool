@@ -17,6 +17,10 @@ script ArtifactFinder
     -- Checkboxes
     property sysInfo : false
     property unifLogs : false
+    
+    -- ToolTips, Offer explanation of options when hovered over
+    property sysTip : "This will gather the system information displayed in system profiler."
+    property unifTip : "Exports the entirety of the unified log. The file will likely be over 1GB."
  
 	on setup:sender
         -- Todo: Add in setup to allow users to enter case / project name, check if directory already exists, etc

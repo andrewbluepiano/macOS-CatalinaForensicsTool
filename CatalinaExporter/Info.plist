@@ -6,8 +6,6 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIconFile</key>
-	<string>Icons</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -22,14 +20,14 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Enable to allow exporting timestamps</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Andrew Afonso. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-    <key>NSAppleEventsUsageDescription</key>
-    <string>Enable to allow exporting timestamps</string>
 	<key>NSServices</key>
 	<array>
 		<dict/>
@@ -37,6 +35,8 @@
 	</array>
 	<key>NSSupportsAutomaticTermination</key>
 	<true/>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
 </dict>

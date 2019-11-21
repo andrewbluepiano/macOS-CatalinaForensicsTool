@@ -703,6 +703,7 @@
                         <connections>
                             <action selector="sysInfoCheck:" target="Voe-Tx-rLC" id="hPG-AI-1az"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="sysInfo" id="txF-83-q9g"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="sysTip" id="bDV-ns-P5D"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Wg-6r-sId">
@@ -853,7 +854,10 @@ DQ
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-wU-jqf">
-                        <rect key="frame" x="39" y="196" width="98" height="18"/>
+                        <rect key="frame" x="39" y="189" width="98" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="84X-w0-MkJ"/>
+                        </constraints>
                         <buttonCell key="cell" type="check" title="Unified Logs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="AC3-aX-dMg">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -861,11 +865,23 @@ DQ
                         <connections>
                             <action selector="unifLogsCheck:" target="Voe-Tx-rLC" id="ASu-5I-FSz"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="unifLogs" id="2Eu-2d-fvY"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="unifTip" id="w3Q-la-MF4"/>
                         </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0eb-Qi-gkm">
+                        <rect key="frame" x="39" y="162" width="61" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="K7Z-KQ-JGe"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CfE-7K-ssQ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="top" secondItem="V4o-q4-4at" secondAttribute="bottom" constant="6" id="1uN-Bt-5AU"/>
+                    <constraint firstItem="0eb-Qi-gkm" firstAttribute="top" secondItem="Io8-wU-jqf" secondAttribute="bottom" constant="6" id="2Zx-Ne-Gij"/>
                     <constraint firstAttribute="trailing" secondItem="ny5-6q-5Q3" secondAttribute="trailing" id="6fv-li-l19"/>
                     <constraint firstItem="xlX-Uw-rfK" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="156" id="FTW-U8-rSn"/>
                     <constraint firstItem="5fk-7N-xBe" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="6" id="KnU-Tr-xKe"/>
@@ -873,6 +889,7 @@ DQ
                     <constraint firstItem="V4o-q4-4at" firstAttribute="top" secondItem="ny5-6q-5Q3" secondAttribute="bottom" constant="41" id="LdM-S6-mxg"/>
                     <constraint firstAttribute="bottom" secondItem="5fk-7N-xBe" secondAttribute="bottom" constant="3" id="Ndj-by-CSl"/>
                     <constraint firstAttribute="trailing" secondItem="uTs-ms-dx6" secondAttribute="trailing" id="SOZ-iS-Jzl"/>
+                    <constraint firstItem="0eb-Qi-gkm" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="Vqb-5V-Vhx"/>
                     <constraint firstItem="5Wg-6r-sId" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="XiF-2Y-nT2"/>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="fPt-Mq-arG"/>
                     <constraint firstAttribute="trailing" secondItem="HGF-c1-IMS" secondAttribute="trailing" constant="20" id="gCg-Et-10K"/>
@@ -885,7 +902,7 @@ DQ
                     <constraint firstItem="uTs-ms-dx6" firstAttribute="top" secondItem="HGF-c1-IMS" secondAttribute="bottom" constant="8" id="xsl-Mb-VfO"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="88" y="-150"/>
+            <point key="canvasLocation" x="87.5" y="-150"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="4BF-GU-JO6"/>
     </objects>
