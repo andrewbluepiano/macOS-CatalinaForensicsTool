@@ -1,5 +1,5 @@
-# CatalinaForensicsTool
-![Icon](https://i.imgur.com/cGllffv.png| width=100) A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
+# CatalinaForensicsTool <img src="https://i.imgur.com/cGllffv.png" width="75" height="75" />
+A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
 Relies on AppleScriptObjC for operation. 
 
