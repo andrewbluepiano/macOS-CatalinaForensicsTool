@@ -1,6 +1,8 @@
 # <img src="https://i.imgur.com/cGllffv.png" width="75" height="75" /> CatalinaForensicsTool 
 A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
+But what its really about is providing a building block so, so anyone can add in stuff, make it their own. Its not exactly simple to get Cocoa, and AppleScript talking to terminal, and now calling python stuff is in there too. This app lays things out pretty understandably. Just be aware of how things are delegated and assigned, and you shouldnt have a problem adding on. 
+
 DOES NOT USE SANDBOX. 
 
 Relies on AppleScriptObjC for operation. 
@@ -16,7 +18,7 @@ This is not indended to be a standard consumer / production app, as its operatio
 Much more functionality would be availible in a version designed to run with SIP disabled. 
 
 ### Known Quirk(s)
-* The check password function isnt exactly working as expected. As it should display an alert if you enter it incorrectly in the first box. Hasn't seemed to effect functionality. Will be addressed, but not for a few days at least. 
+* The check password function isnt exactly working as expected. If you dont enter the right password in the main window it wont tell you right now. It just wont display the "Auth Success" notification, and it wont be able to get all the data. 
 
 ## Two ways to run:
 1. Compile it yourself! (BETTER, SAFER WAY. You should check what a program like this is doing)
