@@ -15,6 +15,11 @@ int main(int argc, const char * argv[]) {
         // Setup code that might create autoreleased objects goes here.
     }
     [[NSBundle mainBundle] loadAppleScriptObjectiveCScripts];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Disclaimer"];
+    [alert setInformativeText:@"This app is for easy information gathering only. Forensically speaking, it should only be run on a image of a live system."];
+    [alert addButtonWithTitle:@"Ok"];
+    [alert runModal];
     ArtifactFinder *stuff = [[NSClassFromString(@"ArtifactFinder") alloc] init];
     
 //    [stuff setVars];

@@ -71,8 +71,8 @@ script ArtifactFinder
             set fileLocation to outputLocation & "SystemInformation/"
             set sysProfTime to current date
             do shell script "mkdir " & fileLocation & " && system_profiler -detailLevel basic -xml > " & fileLocation & "SystemProfile.spx"
-            display notification "System Profiled"
             timeStamp(outputLocation, "SystemProfile.spx", sysProfTime)
+            display notification "System Profiled"
         end if
     end systemProfile
     
@@ -81,6 +81,7 @@ script ArtifactFinder
             set unifLogTime to current date
             do shell script "log collect --output " & outputLocation & "unifLogs.logarchive" password shellPassword with administrator privileges
             timeStamp(outputLocation, "unifLogs.logarchive", unifLogTime)
+            display notification "Logs Unified"
         end if
     end getLogs
     
@@ -88,7 +89,7 @@ script ArtifactFinder
         if instHist as boolean then
             set fileLocation to outputLocation & "InstallationHistory/"
             set instHistTime to current date
-            -- p flag must be used for CP to keep metadata intact. 
+            -- p flag must be used for CP to keep metadata intact.
             do shell script "mkdir " & fileLocation & " && cp -p /Library/Receipts/InstallHistory.plist " & fileLocation
             timeStamp(outputLocation, "InstallHistory.plist", instHistTime)
         end if
