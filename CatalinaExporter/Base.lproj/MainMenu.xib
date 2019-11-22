@@ -684,15 +684,15 @@
         <window title="CatalinaExporter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="513" height="509"/>
+            <rect key="contentRect" x="335" y="390" width="513" height="400"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
-            <value key="minSize" type="size" width="519" height="300"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="519" height="509"/>
+            <value key="minSize" type="size" width="519" height="400"/>
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="519" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V4o-q4-4at">
-                        <rect key="frame" x="39" y="283" width="112" height="25"/>
+                        <rect key="frame" x="39" y="174" width="112" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="rIe-Q0-kGT"/>
                         </constraints>
@@ -733,7 +733,7 @@
                         </textFieldCell>
                     </textField>
                     <box verticalHuggingPriority="750" boxType="separator" id="ny5-6q-5Q3">
-                        <rect key="frame" x="3" y="359" width="519" height="4"/>
+                        <rect key="frame" x="3" y="250" width="519" height="4"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" id="rvC-pN-8yf"/>
@@ -753,7 +753,7 @@
                         </connections>
                     </button>
                     <box borderType="none" title="Box" transparent="YES" id="7ah-rb-rQ3">
-                        <rect key="frame" x="79" y="365" width="369" height="144"/>
+                        <rect key="frame" x="79" y="256" width="369" height="144"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Dbs-BS-7pl">
                             <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
@@ -842,7 +842,7 @@ DQ
                         </view>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xlX-Uw-rfK">
-                        <rect key="frame" x="184" y="332" width="152" height="21"/>
+                        <rect key="frame" x="184" y="223" width="152" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="148" id="M5i-yZ-ctE"/>
                             <constraint firstAttribute="height" constant="21" id="zfL-s7-CVl"/>
@@ -854,7 +854,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-wU-jqf">
-                        <rect key="frame" x="39" y="256" width="98" height="25"/>
+                        <rect key="frame" x="39" y="147" width="98" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="84X-w0-MkJ"/>
                         </constraints>
@@ -869,7 +869,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0eb-Qi-gkm">
-                        <rect key="frame" x="39" y="229" width="135" height="25"/>
+                        <rect key="frame" x="39" y="120" width="135" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="K7Z-KQ-JGe"/>
                         </constraints>
@@ -884,7 +884,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lV0-cc-1hI">
-                        <rect key="frame" x="39" y="202" width="79" height="25"/>
+                        <rect key="frame" x="39" y="93" width="79" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="8od-Tf-VcN"/>
                         </constraints>
@@ -899,7 +899,7 @@ DQ
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-nj-S1h">
-                        <rect key="frame" x="165" y="315" width="190" height="16"/>
+                        <rect key="frame" x="165" y="206" width="190" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="hover over item for description" id="QuT-z4-zHe">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
