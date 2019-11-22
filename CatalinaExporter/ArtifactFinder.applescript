@@ -80,8 +80,9 @@ script ArtifactFinder
     
     on getUnifLogs(unifLogs, outputLocation, shellPassword)
         if unifLogs as boolean then
+            set fileLocation to outputLocation & "UnifiedLogs/"
             set unifLogTime to current date
-            do shell script "log collect --output " & outputLocation & "unifLogs.logarchive" password shellPassword with administrator privileges
+            do shell script "mkdir " & fileLocation & " && log collect --output " & fileLocation & "unifLogs.logarchive" password shellPassword with administrator privileges
             timeStamp(outputLocation, "unifLogs.logarchive", unifLogTime)
             display notification "Logs Unified"
         end if
