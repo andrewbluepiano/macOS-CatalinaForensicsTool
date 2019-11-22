@@ -17,11 +17,14 @@ script ArtifactFinder
     -- Checkboxes
     property sysInfo : false
     property unifLogs : false
+    property instHist : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
     property unifTip : "Exports the entirety of the unified log. The file will likely be over 1GB."
+    property instHistTip : "History of installed Applications and Updates"
  
+    -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
         -- Todo: Add in setup to allow users to enter case / project name, check if directory already exists, etc
         set outputLocation to choose folder with prompt "Please select an output folder:"
@@ -35,7 +38,7 @@ script ArtifactFinder
             -- display notification "Old folder detected, removing" with title "Progress Alert"
             do shell script "/bin/rm -rf " & outputLocation
         on error errMsg number errorNumber
-            -- display dialog "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+            display dialog "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
         end try
         display notification "Creating new output folder" with title "Progress Alert"
         delay 1
@@ -57,21 +60,18 @@ script ArtifactFinder
             delay 1
             return 1
         on error errMsg number errorNumber
-            display dialog "Debugging alert error occurred:  " & errMsg as text & " Num: " & errorNumber as text
-            --display alert "Sorry, you've entered an invalid password. Please try again."
+            -- display alert "Debugging alert error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+            display alert "Sorry, you've entered an invalid password. Please try again."
             return 0
         end try
     end checkPasswd:
     
     on systemProfile(sysInfo, outputLocation, shellPassword)
         if sysInfo as boolean then
-            --set outFile to outputLocation & "SysInfo.txt"
-            do shell script "system_profiler -detailLevel basic -xml > " & outputLocation & "/SystemProfile.spx"
+            set fileLocation to outputLocation & "SystemInformation/"
             set sysProfTime to current date
+            do shell script "mkdir " & fileLocation & " && system_profiler -detailLevel basic -xml > " & fileLocation & "SystemProfile.spx"
             display notification "System Profiled"
-            --set myFile to open for access outFile with write permission
-            --write (get system info) to myFile
-            --close access myFile
             timeStamp(outputLocation, "SystemProfile.spx", sysProfTime)
         end if
     end systemProfile
@@ -83,6 +83,16 @@ script ArtifactFinder
             timeStamp(outputLocation, "unifLogs.logarchive", unifLogTime)
         end if
     end getLogs
+    
+    on getInstallHist(instHist, outputLocation, shellPassword)
+        if instHist as boolean then
+            set fileLocation to outputLocation & "InstallationHistory/"
+            set instHistTime to current date
+            -- p flag must be used for CP to keep metadata intact. 
+            do shell script "mkdir " & fileLocation & " && cp -p /Library/Receipts/InstallHistory.plist " & fileLocation
+            timeStamp(outputLocation, "InstallHistory.plist", instHistTime)
+        end if
+    end getInstallHist
     
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
@@ -107,6 +117,7 @@ script ArtifactFinder
     on mainStuff:sender
         systemProfile(sysInfo, outputLocation, shellPassword)
         getUnifLogs(unifLogs, outputLocation, shellPassword)
+        getInstallHist(instHist, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -120,4 +131,9 @@ script ArtifactFinder
         -- TODO: Add in selecter for basic mini full report
         set unifLogs to sender's intValue()
     end unifLogsCheck:
+    
+    on instHistCheck:sender
+        -- TODO: Add in selecter for basic mini full report
+        set instHist to sender's intValue()
+    end instHistCheck:
 end script

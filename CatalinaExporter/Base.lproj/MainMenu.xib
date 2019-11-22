@@ -869,14 +869,19 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0eb-Qi-gkm">
-                        <rect key="frame" x="39" y="162" width="61" height="25"/>
+                        <rect key="frame" x="39" y="162" width="135" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="K7Z-KQ-JGe"/>
                         </constraints>
-                        <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CfE-7K-ssQ">
+                        <buttonCell key="cell" type="check" title="Installation History" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CfE-7K-ssQ">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="instHistCheck:" target="Voe-Tx-rLC" id="n4r-P5-WLa"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="instHistTip" id="Y2w-6I-Wv3"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="instHist" id="OfH-t1-Xnn"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
