@@ -18,11 +18,13 @@ script ArtifactFinder
     property sysInfo : false
     property unifLogs : false
     property instHist : false
+    property fsEvents : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
     property unifTip : "Exports the entirety of the unified log. The file will likely be over 1GB."
     property instHistTip : "History of installed Applications and Updates"
+    property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while. It uses python."
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -95,6 +97,16 @@ script ArtifactFinder
         end if
     end getInstallHist
     
+    on fsEventsParse(fsEvents, outputLocation, shellPassword)
+        if fsEvents as boolean then
+            set fileLocation to outputLocation & "FSEventsData/"
+            set fsEventTime to current date
+            set appLocation to current application's NSBundle's mainBundle()'s resourcePath() as text
+            do shell script "mkdir " & fileLocation & " && python " & appLocation & "/FSEventsParser/FSEParser_V4.0.py -s /.fseventsd/ -o " & fileLocation & " -t folder" password shellPassword with administrator privileges
+            timeStamp(outputLocation, "FSEventsData", fsEventTime)
+        end if
+    end fsEventsParse
+    
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
         tell application "System Events"
@@ -119,6 +131,7 @@ script ArtifactFinder
         systemProfile(sysInfo, outputLocation, shellPassword)
         getUnifLogs(unifLogs, outputLocation, shellPassword)
         getInstallHist(instHist, outputLocation, shellPassword)
+        fsEventsParse(fsEvents, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -137,4 +150,9 @@ script ArtifactFinder
         -- TODO: Add in selecter for basic mini full report
         set instHist to sender's intValue()
     end instHistCheck:
+    
+    on fseventsCheck:sender
+        -- TODO: Add in selecter for basic mini full report
+        set fsEvents to sender's intValue()
+    end fseventsCheck:
 end script

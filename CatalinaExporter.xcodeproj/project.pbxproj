@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8167E0D82387BC0200EFC2C4 /* FSEventsParser in Resources */ = {isa = PBXBuildFile; fileRef = 8167E0D72387BC0200EFC2C4 /* FSEventsParser */; };
 		816B1C21237927AC002C1459 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 816B1C20237927AC002C1459 /* AppDelegate.m */; };
 		816B1C24237927AC002C1459 /* CatalinaExporter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 816B1C22237927AC002C1459 /* CatalinaExporter.xcdatamodeld */; };
 		816B1C26237927AE002C1459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 816B1C25237927AE002C1459 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8167E0D72387BC0200EFC2C4 /* FSEventsParser */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FSEventsParser; sourceTree = "<group>"; };
 		816B1C1C237927AC002C1459 /* CatalinaExporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatalinaExporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		816B1C1F237927AC002C1459 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		816B1C20237927AC002C1459 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		816B1C1E237927AC002C1459 /* CatalinaExporter */ = {
 			isa = PBXGroup;
 			children = (
+				8167E0D72387BC0200EFC2C4 /* FSEventsParser */,
 				816B1C51237928B9002C1459 /* ArtifactFinder.applescript */,
 				816B1C5923792E42002C1459 /* ArtifactFinder.h */,
 				816B1C1F237927AC002C1459 /* AppDelegate.h */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8167E0D82387BC0200EFC2C4 /* FSEventsParser in Resources */,
 				816B1C26237927AE002C1459 /* Assets.xcassets in Resources */,
 				816B1C29237927AE002C1459 /* MainMenu.xib in Resources */,
 			);
