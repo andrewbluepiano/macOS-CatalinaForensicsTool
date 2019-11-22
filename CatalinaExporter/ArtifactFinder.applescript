@@ -40,7 +40,7 @@ script ArtifactFinder
             -- display notification "Old folder detected, removing" with title "Progress Alert"
             do shell script "/bin/rm -rf " & outputLocation
         on error errMsg number errorNumber
-            display dialog "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+            -- display dialog "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
         end try
         display notification "Creating new output folder" with title "Progress Alert"
         delay 1
