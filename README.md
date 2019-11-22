@@ -11,6 +11,8 @@ If you are not  prepared to debug any minor build failures from things in progre
 
 This is not indended to be a standard consumer / production app, as its operation violates many core traits of normal macOS app operation. It is not malicious in any way, just not something the average Jill/Joe should be messing around with in general. 
 
+Much more functionality would be availible in a version designed to run with SIP disabled. 
+
 ### Known Quirk(s)
 * The check password function isnt exactly working as expected. As it should display an alert if you enter it incorrectly in the first box. Hasn't seemed to effect functionality. Will be addressed, but not for a few days at least. 
 
