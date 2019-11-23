@@ -15,10 +15,14 @@ If you are not prepared to debug any minor quirks / build failures from things i
 
 This is not indended to be a standard consumer / production app, as its operation violates many core traits of normal macOS app operation. It is not malicious in any way, just not something the average Jill/Joe should be messing around with in general. 
 
-Much more functionality would be availible in a version designed to run with SIP disabled. 
+## Big future plan:
+Much more functionality would be availible in a version designed to run with SIP disabled. So adding a set of features specific to that is something that is planned, as theres a lot more relevant info in Catalina stored in those protected areas. 
 
 ### Known Quirk(s)
 * The check password function isnt exactly working as expected. If you dont enter the right password in the main window it wont tell you right now. It just wont display the "Auth Success" notification, and it wont be able to get all the data. 
+  * Planned fix method:
+    1. Ideal fix would to be to automate entering the password from the main window into the popup asking for creds, but I would hope thats not possible to automate with AppleScript for several reasons. But if it is, and there is a secure way to do that, develemontally speaking that would be ideal. 
+    2. More likely to be just changing the the password check function works. 
 
 ## Two ways to run:
 1. Compile it yourself! (BETTER, SAFER WAY. You should check what a program like this is doing)
