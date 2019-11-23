@@ -29,10 +29,7 @@ script ArtifactFinder
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
         -- Todo: Add in setup to allow users to enter case / project name, check if directory already exists, etc
-        set outputLocation to choose folder with prompt "Please select an output folder:"
-        set outputLocation to POSIX path of outputLocation
-        set outputLocation to outputLocation as string
-        set outputLocation to outputLocation & "CatalinaArtifacts/"
+        set outputLocation to ((POSIX path of (choose folder with prompt "Please select an output folder:")) as string) & "CatalinaArtifacts/"
         outputLocationField's setStringValue_(outputLocation)
         -- TRY BELOW FOR DEVELOPMENT ONLY, DONT LEAVE IN WHEN SUBMITTED, COULD CAUSE FORENSIC DATA DELETION
         try
@@ -45,11 +42,11 @@ script ArtifactFinder
         display notification "Creating new output folder" with title "Progress Alert"
         delay 1
         do shell script "/bin/mkdir " & outputLocation
+	timeStamp(outputLocation, "Program Start Time", startTime)
     end setup:
     
     on testWindow:sender
         -- To test applescript variables, as theres odd nonsense getting the storage persistant.
-        -- display dialog shellPassword
         display alert outputLocation
     end testWindow:
     
