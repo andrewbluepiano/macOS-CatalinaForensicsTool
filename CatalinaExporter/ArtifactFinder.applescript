@@ -37,7 +37,7 @@ script ArtifactFinder
         -- Todo: Add in setup to allow users to enter case / project name, check if directory already exists, etc
         set outputLocation to ((POSIX path of (choose folder with prompt "Please select an output folder:")) as string) & "CatalinaArtifacts/"
         outputLocationField's setStringValue_(outputLocation)
-        -- TRY BELOW FOR DEVELOPMENT ONLY, DONT LEAVE IN WHEN SUBMITTED, COULD CAUSE FORENSIC DATA DELETION
+        -- TRY BELOW FOR DEVELOPMENT ONLY, DONT LEAVE IN WHEN SUBMITTED, COULD CAUSE FORENSIC DATA DELETION OF EXISTING CASES
         try
             do shell script "/bin/ls " & outputLocation
             -- display notification "Old folder detected, removing" with title "Progress Alert"
@@ -53,40 +53,7 @@ script ArtifactFinder
     
     on testWindow:sender
         -- Debugging
-        set scriptLocation to (current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/getEverything.scpt"
-        
-        set getEverything to load script current application's POSIX file scriptLocation
-        
-        tell getEverything
-            set allContents to runGet()
-        end tell
-        
-        repeat with oneFile in allContents
-            set fileAlias to oneFile as POSIX file as alias
-            set mdItem to current application's NSMetadataItem's alloc()'s initWithURL:fileAlias
-            set theMetadata to (mdItem's valuesForAttributes:(mdItem's attributes())) as record
-            display alert "1"
-            set newDict to current application's NSDictionary's dictionaryWithDictionary:theMetadata
-            
-            set allKeys to newDict's allKeys()
-            set allValues to newDict's allValues()
-            repeat with i from 1 to (count allKeys)
-                display alert (item i of allKeys as string)
-            end repeat
-            
-            
-            set theKeys to (mdItem's attributes())
-            set theMetadata to mdItem's valuesForAttributes:theKeys
-            display alert (item 1 of allValues)
-            repeat with i from 1 to (count allKeys)
-                display alert "2"
-                display alert ("Key: " & (item i of theKeys as string))
-                display alert "3"
-                display alert ("Value: " & (class of (item i of allValues) as string))
-            -- display alert (name of (info for (oneFile as POSIX file)))
-            end repeat
-        end repeat
-        
+        display alert "This does nothing unless you tell it what to do."
     end testWindow:
     
     on checkPasswd:sender
@@ -148,7 +115,9 @@ script ArtifactFinder
             set fileLocation to outputLocation & "FSEventsData/"
             set fsEventTime to current date
             set appLocation to current application's NSBundle's mainBundle()'s resourcePath() as text
-            do shell script "mkdir " & fileLocation & " && python " & appLocation & "/FSEventsParser/FSEParser_V4.0.py -s /.fseventsd/ -o " & fileLocation & " -t folder" password shellPassword with administrator privileges
+            do shell script "mkdir " & fileLocation
+            set theCommand to ((quoted form of (appLocation & "/FSEventsParser/FSEParser_V4")) & " -s /.fseventsd/ -o " & fileLocation & " -t folder")
+            do shell script theCommand password shellPassword with administrator privileges
             timeStamp(outputLocation, "FSEventsData", fsEventTime)
         end if
     end fsEventsParse
@@ -156,7 +125,7 @@ script ArtifactFinder
     on getMetaData(getMeta, outputLocation, shellPassword)
         -- maybe PlistBuddy needs to get involved
         if getMeta as boolean then
-            display alert  "WARNING" message "This function is recursive throughout the entire directory selected. It will follow aliases, symlinks, whatever. So this will take a long time for folders with lots of items. \n\nIf you select a directory whose contents you arent aware of, there is a high potential to end up scanning the entire filesystem. \n\n Also, this function is a bit wonky. MDLS didnt want to accept the 'with administrator permissions' flag. So that didnt happen. I dont know how much that will effect what this is able to record.\n\nBe careful, youve been warned.\n\n "
+            display alert  "METADATA FUNCTION WARNING" message "This function is recursive throughout the entire directory selected. It will follow aliases, symlinks, whatever. So this will take a long time for folders with lots of items. \n\nIf you select a directory whose contents you arent aware of, there is a high potential to end up scanning the entire filesystem. \n\n Also, this function is a bit wonky. MDLS didnt want to accept the 'with administrator permissions' flag. So that didnt happen. I dont know how much that will effect what this is able to record.\n\nBe careful, youve been warned.\n\n "
             set metaDataStartTime to current date
             set fileLocation to outputLocation & "MetaData/"
             set outputFileLocation to outputLocation & "MetaData/metadata.plist"

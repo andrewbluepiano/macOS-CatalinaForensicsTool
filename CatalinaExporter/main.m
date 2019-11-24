@@ -16,8 +16,8 @@ int main(int argc, const char * argv[]) {
     }
     [[NSBundle mainBundle] loadAppleScriptObjectiveCScripts];
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Disclaimer"];
-    [alert setInformativeText:@"This app is for easy information gathering only. Forensically speaking, it should only be run on a image of a live system. \n\nAlso, as this entire application is a fight against Apple's normal application controls, don't be shocked if somethings wonky. My MacBook Pro has crashed more timed developing this than in the 4 years I have owned it. Never as a result of running the app itself, so it shouldnt be an issue, but if you begin to add your own functions, dont be suprised if you experience similar things."];
+    [alert setMessageText:@"Disclaimer & Info"];
+    [alert setInformativeText:@"This app requires full disk access. Please enable it for the App in System Preferences.\n\nThis app is for easy information gathering only. Forensically speaking, it should only be run on a image of a live system. \n\nAlso, as this entire application is a fight against Apple's normal application controls, as well as... Catalina being Catalina. Don't be shocked if somethings wonky. My MacBook Pro has crashed more timed developing this than in the 4 years I have owned it. It seems to be tied to file functions using uncompiled AppleScript, as it was never as a result of running the app itself, so it shouldnt be an issue, but if you begin to add your own functions, dont be suprised if you experience similar things."];
     [alert addButtonWithTitle:@"Ok"];
     [alert runModal];
     ArtifactFinder *stuff = [[NSClassFromString(@"ArtifactFinder") alloc] init];
