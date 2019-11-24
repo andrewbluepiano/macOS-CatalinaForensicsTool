@@ -21,6 +21,7 @@ This is not indended to be a standard consumer / production app, as its operatio
 Much more functionality would be availible in a version designed to run with SIP disabled. So adding a set of features specific to that is something that is planned, as theres a lot more relevant info in Catalina stored in those protected areas. 
 
 ### Known Quirk(s)
+* Dont open more than one instance. Doing so sometimes crashes system. 
 * The check password function isnt exactly working as expected. If you dont enter the right password in the main window it wont tell you right now. It just wont display the "Auth Success" notification, and it wont be able to get all the data. 
   * Planned fix method:
     1. Ideal fix would to be to automate entering the password from the main window into the popup asking for creds, but I would hope thats not possible to automate with AppleScript for several reasons. But if it is, and there is a secure way to do that, develemontally speaking that would be ideal. 
