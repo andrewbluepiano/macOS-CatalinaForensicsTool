@@ -74,7 +74,7 @@ script ArtifactFinder
         if sysInfo as boolean then
             set fileLocation to outputLocation & "SystemInformation/"
             set sysProfTime to current date
-            do shell script "mkdir " & fileLocation & " && system_profiler -detailLevel basic -xml > " & fileLocation & "SystemProfile.spx"
+            do shell script "mkdir " & fileLocation & " && system_profiler -detailLevel full -xml > " & fileLocation & "SystemProfile.spx"
             timeStamp(outputLocation, "SystemProfile.spx", sysProfTime)
             display notification "System Profiled"
         end if
