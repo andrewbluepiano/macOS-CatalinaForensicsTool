@@ -1,4 +1,5 @@
 -- A nice base for the project.
+-- overall todo: add in options for options of the functions called to get info. 
 use framework "Foundation"
 use framework "OSAKit"
 use scripting additions
@@ -10,6 +11,7 @@ script ArtifactFinder
 	-- Store these values for use in other method calls
 	property shellPassword : missing value
     property shellPasswordField : missing value
+    -- outputLocation is string of selected path plus CatalinaArtifacts/
 	property outputLocation : missing value
     property outputLocationField : missing value
     property startTime : current date
@@ -19,12 +21,16 @@ script ArtifactFinder
     property unifLogs : false
     property instHist : false
     property fsEvents : false
+    property getMeta : false
+    property startItems : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
     property unifTip : "Exports the entirety of the unified log. The file will likely be over 1GB."
     property instHistTip : "History of installed Applications and Updates"
     property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while. It uses python."
+    property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
+    property startItemTip : "items designated to load when you start your Mac"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -42,12 +48,45 @@ script ArtifactFinder
         display notification "Creating new output folder" with title "Progress Alert"
         delay 1
         do shell script "/bin/mkdir " & outputLocation
-	timeStamp(outputLocation, "Program Start Time", startTime)
+        timeStamp(outputLocation, "Program Start Time", startTime)
     end setup:
     
     on testWindow:sender
-        -- To test applescript variables, as theres odd nonsense getting the storage persistant.
-        display alert outputLocation
+        -- Debugging
+        set scriptLocation to (current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/getEverything.scpt"
+        
+        set getEverything to load script current application's POSIX file scriptLocation
+        
+        tell getEverything
+            set allContents to runGet()
+        end tell
+        
+        repeat with oneFile in allContents
+            set fileAlias to oneFile as POSIX file as alias
+            set mdItem to current application's NSMetadataItem's alloc()'s initWithURL:fileAlias
+            set theMetadata to (mdItem's valuesForAttributes:(mdItem's attributes())) as record
+            display alert "1"
+            set newDict to current application's NSDictionary's dictionaryWithDictionary:theMetadata
+            
+            set allKeys to newDict's allKeys()
+            set allValues to newDict's allValues()
+            repeat with i from 1 to (count allKeys)
+                display alert (item i of allKeys as string)
+            end repeat
+            
+            
+            set theKeys to (mdItem's attributes())
+            set theMetadata to mdItem's valuesForAttributes:theKeys
+            display alert (item 1 of allValues)
+            repeat with i from 1 to (count allKeys)
+                display alert "2"
+                display alert ("Key: " & (item i of theKeys as string))
+                display alert "3"
+                display alert ("Value: " & (class of (item i of allValues) as string))
+            -- display alert (name of (info for (oneFile as POSIX file)))
+            end repeat
+        end repeat
+        
     end testWindow:
     
     on checkPasswd:sender
@@ -57,7 +96,6 @@ script ArtifactFinder
             do shell script "/bin/echo" password shellPassword with administrator privileges
             display notification "Auth Success"
             delay 1
-            return 1
         on error errMsg number errorNumber
             -- display alert "Debugging alert error occurred:  " & errMsg as text & " Num: " & errorNumber as text
             display alert "Sorry, you've entered an invalid password. Please try again."
@@ -95,6 +133,16 @@ script ArtifactFinder
         end if
     end getInstallHist
     
+    on getStartItems(startItems, outputLocation, shellPassword)
+        if startItems as boolean then
+            set fileLocation to outputLocation & "StartupItems/"
+            set getStartItemsTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            -- do shell script "mkdir " & fileLocation & " && cp -p -r /Library/StartupItems/ " & fileLocation
+            timeStamp(outputLocation, "InstallHistory.plist", getStartItemsTime)
+        end if
+    end getStartItems
+    
     on fsEventsParse(fsEvents, outputLocation, shellPassword)
         if fsEvents as boolean then
             set fileLocation to outputLocation & "FSEventsData/"
@@ -104,6 +152,50 @@ script ArtifactFinder
             timeStamp(outputLocation, "FSEventsData", fsEventTime)
         end if
     end fsEventsParse
+    
+    on getMetaData(getMeta, outputLocation, shellPassword)
+        -- maybe PlistBuddy needs to get involved
+        if getMeta as boolean then
+            display alert  "WARNING" message "This function is recursive throughout the entire directory selected. It will follow aliases, symlinks, whatever. So this will take a long time for folders with lots of items. \n\nIf you select a directory whose contents you arent aware of, there is a high potential to end up scanning the entire filesystem. \n\n Also, this function is a bit wonky. MDLS didnt want to accept the 'with administrator permissions' flag. So that didnt happen. I dont know how much that will effect what this is able to record.\n\nBe careful, youve been warned.\n\n "
+            set metaDataStartTime to current date
+            set fileLocation to outputLocation & "MetaData/"
+            set outputFileLocation to outputLocation & "MetaData/metadata.plist"
+            do shell script "mkdir " & fileLocation
+            set appLocation to (current application's NSBundle's mainBundle()'s resourcePath() as text)
+            set scriptLocation to appLocation & "/subScripts/getEverything.scpt"
+            set getEverything to load script current application's POSIX file scriptLocation
+
+            tell getEverything
+                set allContents to runGet()
+            end tell
+            -- everything is POSIX paths of stuff
+
+            -- set metaDataDict to {}
+
+            tell application "System Events"
+                set metaDataDict to make new property list item with properties {kind:record}
+                set metaDataFilePath to (fileLocation & "MetaData.plist")
+                set metaDataFile to make new property list file with properties {contents:metaDataDict, name:metaDataFilePath}
+            end tell
+            
+            set a to 0
+            
+            repeat with oneFile in allContents
+                -- display alert (quoted form of oneFile)
+                set mdlsCmd to ("mdls " & quoted form of oneFile & " -plist " & appLocation & "/tmp.plist")
+                try
+                    do shell script mdlsCmd
+                    do shell script "/usr/libexec/PlistBuddy -c \"Add :" & a & " dict\" " & outputFileLocation
+                    do shell script "/usr/libexec/PlistBuddy -c \"Add :" & a & ":FilePath string "& quoted form of oneFile &"\"  " & outputFileLocation
+                    do shell script "/usr/libexec/PlistBuddy -c \"Merge " & appLocation & "/tmp.plist :" & a & " \" " & outputFileLocation
+                    set a to (a + 1)
+                on error errMsg number errorNumber
+                    -- display notification "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+                end try
+            end repeat
+            timeStamp(outputLocation, "metadata backup start time", metaDataStartTime)
+        end if
+    end getMetaData
     
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
@@ -130,27 +222,33 @@ script ArtifactFinder
         getUnifLogs(unifLogs, outputLocation, shellPassword)
         getInstallHist(instHist, outputLocation, shellPassword)
         fsEventsParse(fsEvents, outputLocation, shellPassword)
+        getMetaData(getMeta, outputLocation, shellPassword)
+        getStartItems(startItems, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
     -- Checkbox Handelers
     on sysInfoCheck:sender
-        -- TODO: Add in selecter for basic mini full report
         set sysInfo to sender's intValue()
     end sysInfoCheck:
     
     on unifLogsCheck:sender
-        -- TODO: Add in selecter for basic mini full report
         set unifLogs to sender's intValue()
     end unifLogsCheck:
     
     on instHistCheck:sender
-        -- TODO: Add in selecter for basic mini full report
         set instHist to sender's intValue()
     end instHistCheck:
     
     on fseventsCheck:sender
-        -- TODO: Add in selecter for basic mini full report
         set fsEvents to sender's intValue()
     end fseventsCheck:
+    
+    on getMetaCheck:sender
+        set getMeta to sender's intValue()
+    end getMetaCheck:
+    
+    on startItemsCheck:sender
+        set startItems to sender's intValue()
+    end startItemsCheck:
 end script

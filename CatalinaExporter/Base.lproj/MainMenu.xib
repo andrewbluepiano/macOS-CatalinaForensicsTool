@@ -687,7 +687,7 @@
             <rect key="contentRect" x="335" y="390" width="513" height="400"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <value key="minSize" type="size" width="519" height="400"/>
-            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="519" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -753,7 +753,7 @@
                         </connections>
                     </button>
                     <box borderType="none" title="Box" transparent="YES" id="7ah-rb-rQ3">
-                        <rect key="frame" x="79" y="256" width="369" height="144"/>
+                        <rect key="frame" x="78" y="256" width="369" height="144"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Dbs-BS-7pl">
                             <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
@@ -894,8 +894,8 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="fseventsCheck:" target="Voe-Tx-rLC" id="12O-C7-t5d"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="fseventTip" id="lG7-cY-zFF"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="fsEvents" id="k0e-QO-Wz0"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="fseventTip" id="lG7-cY-zFF"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-nj-S1h">
@@ -906,6 +906,21 @@ DQ
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zto-hd-gT1">
+                        <rect key="frame" x="190" y="172" width="139" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="yWl-aw-I7e"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Directory Metadata" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zwE-S4-mOG">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="getMetaCheck:" target="Voe-Tx-rLC" id="gwf-EL-nBG"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="getMeta" id="K1x-Zb-Bhg"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="getMetaTip" id="m07-Ca-TSP"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="top" secondItem="V4o-q4-4at" secondAttribute="bottom" constant="6" id="1uN-Bt-5AU"/>
@@ -917,9 +932,11 @@ DQ
                     <constraint firstItem="V4o-q4-4at" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="L9o-5Y-ttQ"/>
                     <constraint firstItem="V4o-q4-4at" firstAttribute="top" secondItem="ny5-6q-5Q3" secondAttribute="bottom" constant="55" id="LdM-S6-mxg"/>
                     <constraint firstAttribute="bottom" secondItem="5fk-7N-xBe" secondAttribute="bottom" constant="3" id="Ndj-by-CSl"/>
+                    <constraint firstItem="Zto-hd-gT1" firstAttribute="top" secondItem="fBz-nj-S1h" secondAttribute="bottom" constant="7" id="Ot9-xP-rXa"/>
                     <constraint firstAttribute="trailing" secondItem="uTs-ms-dx6" secondAttribute="trailing" id="SOZ-iS-Jzl"/>
                     <constraint firstItem="0eb-Qi-gkm" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="Vqb-5V-Vhx"/>
                     <constraint firstItem="5Wg-6r-sId" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="XiF-2Y-nT2"/>
+                    <constraint firstItem="Zto-hd-gT1" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="ZkO-Xd-Jg2"/>
                     <constraint firstItem="fBz-nj-S1h" firstAttribute="top" secondItem="xlX-Uw-rfK" secondAttribute="bottom" constant="1" id="c52-Gw-pn7"/>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="fPt-Mq-arG"/>
                     <constraint firstAttribute="trailing" secondItem="HGF-c1-IMS" secondAttribute="trailing" constant="20" id="gCg-Et-10K"/>
