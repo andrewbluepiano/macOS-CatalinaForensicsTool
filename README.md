@@ -30,6 +30,7 @@ Much more functionality would be availible in a version designed to run with SIP
 1. Compile it yourself! (BETTER, SAFER WAY. You should check what a program like this is doing)
 2. Download the release .app and run the following command on the file:
 xattr -cr CatalinaExporter.app
+3. You must give CatalinaExporter.app full disk access for some functions to work. 
 
 ## Screenshot of Current (Release) State
 ![Screen Shot](https://i.imgur.com/vWfg3XB.png)
@@ -37,4 +38,3 @@ xattr -cr CatalinaExporter.app
 
 ## Credits:
 * David Cowen's FSEventParser used for FSEvent Exporting: https://github.com/dlcowen/FSEventsParser <br>
-(Yes, that means the script now shows you how to trigger python stuff. From withing a Cocoa app. Using AppleScript. Pretty mind blowing stuff, huh. 😂)
