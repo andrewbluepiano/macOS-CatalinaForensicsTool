@@ -21,6 +21,7 @@ This is not indended to be a standard consumer / production app, as its operatio
 Much more functionality would be availible in a version designed to run with SIP disabled. So adding a set of features specific to that is something that is planned, as theres a lot more relevant info in Catalina stored in those protected areas. 
 
 ### Known Quirk(s)
+* Dont open more than one instance. Doing so sometimes crashes system. 
 * The check password function isnt exactly working as expected. If you dont enter the right password in the main window it wont tell you right now. It just wont display the "Auth Success" notification, and it wont be able to get all the data. 
   * Planned fix method:
     1. Ideal fix would to be to automate entering the password from the main window into the popup asking for creds, but I would hope thats not possible to automate with AppleScript for several reasons. But if it is, and there is a secure way to do that, develemontally speaking that would be ideal. 
@@ -30,6 +31,7 @@ Much more functionality would be availible in a version designed to run with SIP
 1. Compile it yourself! (BETTER, SAFER WAY. You should check what a program like this is doing)
 2. Download the release .app and run the following command on the file:
 xattr -cr CatalinaExporter.app
+3. You must give CatalinaExporter.app full disk access for some functions to work. 
 
 ## Screenshot of Current (Release) State
 ![Screen Shot](https://i.imgur.com/vWfg3XB.png)
@@ -37,4 +39,3 @@ xattr -cr CatalinaExporter.app
 
 ## Credits:
 * David Cowen's FSEventParser used for FSEvent Exporting: https://github.com/dlcowen/FSEventsParser <br>
-(Yes, that means the script now shows you how to trigger python stuff. From withing a Cocoa app. Using AppleScript. Pretty mind blowing stuff, huh. 😂)
