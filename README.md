@@ -1,7 +1,9 @@
 # <img src="https://i.imgur.com/cGllffv.png" width="75" height="75" /> CatalinaForensicsTool 
 A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
-But what its really about is providing a building block so, so anyone can add in stuff, make it their own. Its not exactly simple to get Cocoa, and AppleScript talking to terminal, and now calling python stuff is in there too. This app lays things out pretty understandably. Just be aware of how things are delegated and assigned, and you shouldnt have a problem adding on. 
+But what its really about is providing a building block so, so anyone can add in stuff, make it their own. Its not exactly simple to get Cocoa, and AppleScript talking to terminal, and now calling python stuff is in there too. This app lays things out pretty understandably. Just be aware of how things are delegated and assigned, and you shouldnt have a problem adding on.
+
+The metadata parsing is not a building block. Its a function that took over 12 hours to implement. I am betting that is the most valuable functionality a tool like this can provide. 
 
 DOES NOT USE SANDBOX. 
 
