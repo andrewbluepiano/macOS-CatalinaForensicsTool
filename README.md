@@ -30,7 +30,7 @@ Much more functionality would be availible in a version designed to run with SIP
 xattr -cr CatalinaExporter.app
 
 ## Screenshot of Current (Release) State
-![Screen Shot](https://i.imgur.com/DTmp9de.png)
+![Screen Shot](https://i.imgur.com/vWfg3XB.png)
 
 
 ## Credits:
