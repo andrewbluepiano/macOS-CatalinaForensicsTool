@@ -9,8 +9,6 @@ DOES NOT USE SANDBOX.
 
 Relies on AppleScriptObjC for operation. 
 
-FS Event Parsing uses python. 
-
 Requires various permissions. 
 
 If you are not prepared to debug any minor quirks / build failures from things in progress, stick with the releases tab. Those have actually been tested and are bookmarked for functionality. They're not actually "releases". 
