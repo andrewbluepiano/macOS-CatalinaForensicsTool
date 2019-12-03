@@ -28,7 +28,7 @@ There might be more stuff available in the protected volumes that can be mounted
 		* Admin (y/n) each line
 		* When to timestamp in function flow
 		* Manual or '>' output redirection. 
-* [] Detect if additional instances are running. 
+* [ ] Detect if additional instances are running. 
 
 
 ### Known Quirk(s)
