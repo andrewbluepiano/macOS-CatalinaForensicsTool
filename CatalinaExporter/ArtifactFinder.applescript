@@ -151,12 +151,12 @@ script ArtifactFinder
             
             repeat with oneFile in allContents
                 -- display alert (quoted form of oneFile)
-                set mdlsCmd to ("mdls " & quoted form of oneFile & " -plist " & appLocation & "/tmp.plist")
+                set mdlsCmd to ("mdls " & quoted form of oneFile & " -plist " & quoted form of (appLocation & "/tmp.plist"))
                 try
                     do shell script mdlsCmd
                     do shell script "/usr/libexec/PlistBuddy -c \"Add :" & a & " dict\" " & outputFileLocation
                     do shell script "/usr/libexec/PlistBuddy -c \"Add :" & a & ":FilePath string "& quoted form of oneFile &"\"  " & outputFileLocation
-                    do shell script "/usr/libexec/PlistBuddy -c \"Merge " & appLocation & "/tmp.plist :" & a & " \" " & outputFileLocation
+                    do shell script "/usr/libexec/PlistBuddy -c \"Merge " & quoted form of (appLocation & "/tmp.plist") & " :" & a & " \" " & outputFileLocation
                     set a to (a + 1)
                 on error errMsg number errorNumber
                     -- display notification "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
