@@ -28,7 +28,7 @@ script ArtifactFinder
     property sysTip : "This will gather the system information displayed in system profiler."
     property unifTip : "Exports the entirety of the unified log. The file will likely be over 1GB."
     property instHistTip : "History of installed Applications and Updates"
-    property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while. It uses python."
+    property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while."
     property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
     property startItemTip : "items designated to load when you start your Mac"
  
