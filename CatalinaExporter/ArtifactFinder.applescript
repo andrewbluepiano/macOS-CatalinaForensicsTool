@@ -54,21 +54,34 @@ script ArtifactFinder
     end setup:
     
     on testWindow:sender
+        set appLocation to (quoted form of ((current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/pwTester.sh"))
+        display dialog appLocation
+        set theResponse to (display dialog "What's your name?" default answer "" with icon stop buttons {"Cancel", "Continue"} default button "Continue" with hidden answer)
+        set theusser to (display dialog "What's your username?" default answer "" with icon stop buttons {"Cancel", "Continue"} default button "Continue")
+        try
+            do shell script "sudo -K"
+            set output to do shell script "sudo -n /bin/echo \"cat\"" user name theusser password theResponse
+            display dialog output
+            set the_script to "echo Hello World"
+            set the_result to do shell script the_script
+        on error errMsg number errorNumber
+            display dialog ("Error occurred:  " & errMsg as text) & " Num: " & errorNumber as text
+        end try
         -- Debugging
         display alert "This does nothing unless you tell it what to do."
     end testWindow:
     
     on checkPasswd:sender
         set shellPassword to shellPasswordField's stringValue() as text
+        set scriptLocation to (quoted form of ((current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/pwTester.sh"))
         try
             do shell script "sudo -K"
-            do shell script "/bin/echo" password shellPassword with administrator privileges
+            set output to (do shell script "sh " & scriptLocation & " " & shellPassword)
             display notification "Auth Success"
             delay 1
         on error errMsg number errorNumber
             -- display alert "Debugging alert error occurred:  " & errMsg as text & " Num: " & errorNumber as text
             display alert "Sorry, you've entered an invalid password. Please try again."
-            return 0
         end try
     end checkPasswd:
     
