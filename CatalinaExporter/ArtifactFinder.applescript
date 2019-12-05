@@ -1,5 +1,7 @@
--- A nice base for the project.
--- overall todo: add in options for options of the functions called to get info. 
+-- Author: Andrew Afonso
+-- https://github.com/andrewbluepiano/macOS-CatalinaForensicsTool/
+-- FSEParser Author, Owner: David Cowen
+-- https://github.com/dlcowen/FSEventsParser
 use framework "Foundation"
 use framework "OSAKit"
 use scripting additions
