@@ -36,51 +36,35 @@ script ArtifactFinder
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
-        -- Todo: Add in setup to allow users to enter case / project name, check if directory already exists, etc
         set outputLocation to ((POSIX path of (choose folder with prompt "Please select an output folder:")) as string) & "CatalinaArtifacts/"
-        outputLocationField's setStringValue_(outputLocation)
-        -- TRY BELOW FOR DEVELOPMENT ONLY, DONT LEAVE IN WHEN SUBMITTED, COULD CAUSE FORENSIC DATA DELETION OF EXISTING CASES
         try
             do shell script "/bin/ls " & outputLocation
+            display dialog "Existing export detected in that location. Please choose a new one. The program isnt smart enough to deal with this yet."
             -- display notification "Old folder detected, removing" with title "Progress Alert"
-            do shell script "/bin/rm -rf " & outputLocation
         on error errMsg number errorNumber
-            -- display dialog "Error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+            -- display dialog ("Error occurred:  " & errMsg as text) & " Num: " & errorNumber as text
+            display notification "Creating new output folder" with title "Progress Alert"
+            delay 1
+            do shell script "/bin/mkdir " & outputLocation
+            outputLocationField's setStringValue_(outputLocation)
+            timeStamp(outputLocation, "Program Start Time", startTime)
         end try
-        display notification "Creating new output folder" with title "Progress Alert"
-        delay 1
-        do shell script "/bin/mkdir " & outputLocation
-        timeStamp(outputLocation, "Program Start Time", startTime)
     end setup:
     
     on testWindow:sender
-        set appLocation to (quoted form of ((current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/pwTester.sh"))
-        display dialog appLocation
-        set theResponse to (display dialog "What's your name?" default answer "" with icon stop buttons {"Cancel", "Continue"} default button "Continue" with hidden answer)
-        set theusser to (display dialog "What's your username?" default answer "" with icon stop buttons {"Cancel", "Continue"} default button "Continue")
-        try
-            do shell script "sudo -K"
-            set output to do shell script "sudo -n /bin/echo \"cat\"" user name theusser password theResponse
-            display dialog output
-            set the_script to "echo Hello World"
-            set the_result to do shell script the_script
-        on error errMsg number errorNumber
-            display dialog ("Error occurred:  " & errMsg as text) & " Num: " & errorNumber as text
-        end try
         -- Debugging
         display alert "This does nothing unless you tell it what to do."
     end testWindow:
     
     on checkPasswd:sender
         set shellPassword to shellPasswordField's stringValue() as text
-        set scriptLocation to (quoted form of ((current application's NSBundle's mainBundle()'s resourcePath() as text) & "/subScripts/pwTester.sh"))
         try
-            do shell script "sudo -K"
-            set output to (do shell script "sh " & scriptLocation & " " & shellPassword)
+            do shell script "pwpolicy -p " & shellPassword & " enableuser"
+            do shell script "/bin/echo" with administrator privileges
             display notification "Auth Success"
             delay 1
         on error errMsg number errorNumber
-            -- display alert "Debugging alert error occurred:  " & errMsg as text & " Num: " & errorNumber as text
+            -- display dialog ("Error occurred:  " & errMsg as text) & " Num: " & errorNumber as text
             display alert "Sorry, you've entered an invalid password. Please try again."
         end try
     end checkPasswd:
