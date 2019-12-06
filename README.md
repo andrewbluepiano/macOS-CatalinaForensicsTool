@@ -20,12 +20,12 @@ This is not indended to be a standard consumer / production app, as its operatio
 ## Big future plan:
 There might be more stuff available in the protected volumes that can be mounted with SIP disabled. 
 
-## Overall future functionality:
+## Future functionality:
 * See Issues
 
 
 ### Known Quirk(s)
-* Dont open more than one instance. Doing so sometimes crashes system. 
+* Dont open more than one instance. Doing so sometimes crashes things.  
 * See Issues
 
 
