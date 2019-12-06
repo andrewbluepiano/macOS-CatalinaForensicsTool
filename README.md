@@ -36,7 +36,7 @@ xattr -cr CatalinaExporter.app
 3. You must give CatalinaExporter.app full disk access for some functions to work. 
 
 ## Screenshot of Current (Release) State
-![Screen Shot](https://i.imgur.com/vWfg3XB.png)
+<img src="https://i.imgur.com/vWfg3XB.png" width="500" />
 
 
 ## Credits:
