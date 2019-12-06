@@ -1,6 +1,8 @@
 # <img src="https://i.imgur.com/cGllffv.png" width="75" height="75" /> CatalinaForensicsTool 
 A GUI frontend for AppleScript (shell, etc) based forensic artifact retreival. 
 
+See Wiki for detailed information. 
+
 But what its really about is providing a building block so, so anyone can add in stuff, make it their own. Its not exactly simple to get Cocoa, and AppleScript talking to terminal, and using their own binaries. This app lays things out pretty understandably. Just be aware of how things are delegated and assigned, and you shouldnt have a problem adding on. The hardest part is getting familiar with Xcode. 
 
 DOES NOT USE SANDBOX. 
