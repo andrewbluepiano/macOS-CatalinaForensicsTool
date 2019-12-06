@@ -17,7 +17,7 @@ If you are not prepared to debug any minor quirks / build failures from things i
 
 This is not indended to be a standard consumer / production app, as its operation violates many core traits of normal macOS app operation. It is not malicious in any way, just not something the average Jill/Joe should be messing around with in general. 
 
-## Forensic Disclaimer:
+#### Forensic Disclaimer:
 Ideally a forensic application would be able to run against an image of a system. Unfortunately, that is beyond my scope of immediate knowledge, and storage space, and would take significant time to develop and test. 
 <br><br>
 This should be run on a cloned macOS Catalina system only. I doubt it would do anything if run on a target of an investigation that would invalidate the evidence gathered, but I can't speak to that, so I don't want anyone to be thinking that. 
