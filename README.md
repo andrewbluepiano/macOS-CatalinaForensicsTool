@@ -44,3 +44,6 @@ xattr -cr CatalinaExporter.app
 
 ## Credits:
 * David Cowen's FSEventParser used for FSEvent Exporting: https://github.com/dlcowen/FSEventsParser <br>
+
+## Report:
+https://docs.google.com/document/d/1XVjKJRdYRwxtuPGhpO89HAI2LWikc-SAzo47MzJAyco/edit?usp=sharing
