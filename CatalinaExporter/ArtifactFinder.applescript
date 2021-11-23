@@ -25,6 +25,7 @@ script ArtifactFinder
     property fsEvents : false
     property getMeta : false
     property startItems : false
+    property diagReport : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -33,6 +34,7 @@ script ArtifactFinder
     property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while."
     property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
     property startItemTip : "items designated to load when you start your Mac"
+    property diagreportTips : "This will gather the diagnostic reports on the system."
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -56,6 +58,7 @@ script ArtifactFinder
         display alert "This does nothing unless you tell it what to do."
     end testWindow:
     
+    -- Function to check if provided password is valid
     on checkPasswd:sender
         set shellPassword to shellPasswordField's stringValue() as text
         try
@@ -69,6 +72,7 @@ script ArtifactFinder
         end try
     end checkPasswd:
     
+    -- System Profile Function
     on systemProfile(sysInfo, outputLocation, shellPassword)
         if sysInfo as boolean then
             set fileLocation to outputLocation & "SystemInformation/"
@@ -79,6 +83,7 @@ script ArtifactFinder
         end if
     end systemProfile
     
+    -- Unified Logs Function
     on getUnifLogs(unifLogs, outputLocation, shellPassword)
         if unifLogs as boolean then
             set fileLocation to outputLocation & "UnifiedLogs/"
@@ -89,6 +94,7 @@ script ArtifactFinder
         end if
     end getLogs
     
+    -- Install History Function
     on getInstallHist(instHist, outputLocation, shellPassword)
         if instHist as boolean then
             set fileLocation to outputLocation & "InstallationHistory/"
@@ -99,6 +105,7 @@ script ArtifactFinder
         end if
     end getInstallHist
     
+    -- Get Startup items function
     on getStartItems(startItems, outputLocation, shellPassword)
         if startItems as boolean then
             set fileLocation to outputLocation & "StartupItems/"
@@ -109,6 +116,7 @@ script ArtifactFinder
         end if
     end getStartItems
     
+    -- Parse FS Events Function
     on fsEventsParse(fsEvents, outputLocation, shellPassword)
         if fsEvents as boolean then
             set fileLocation to outputLocation & "FSEventsData/"
@@ -121,6 +129,7 @@ script ArtifactFinder
         end if
     end fsEventsParse
     
+    -- Retrieve Metadata function
     on getMetaData(getMeta, outputLocation, shellPassword)
         -- maybe PlistBuddy needs to get involved
         if getMeta as boolean then
@@ -165,6 +174,18 @@ script ArtifactFinder
         end if
     end getMetaData
     
+    -- Get Diagnostics Reports
+    on getDiagnosticReports(diagReport, outputLocation, shellPassword)
+        if diagReport as boolean then
+            set fileLocation to outputLocation & "/DiagnosticReports"
+            set diagReportTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            do shell script "mkdir " & fileLocation & " && cp -pr /Library/Logs/DiagnosticReports " & fileLocation
+            timeStamp(outputLocation, "DiagnosticReports", diagReportTime)
+        end if
+    end getDiagnosticReports
+    
+    -- Time Stamp Function
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
         tell application "System Events"
@@ -189,6 +210,7 @@ script ArtifactFinder
         systemProfile(sysInfo, outputLocation, shellPassword)
         getUnifLogs(unifLogs, outputLocation, shellPassword)
         getInstallHist(instHist, outputLocation, shellPassword)
+        getDiagnosticReports(true, outputLocation, shellPassword)
         fsEventsParse(fsEvents, outputLocation, shellPassword)
         getMetaData(getMeta, outputLocation, shellPassword)
         getStartItems(startItems, outputLocation, shellPassword)
