@@ -238,6 +238,10 @@ script ArtifactFinder
         set getMeta to sender's intValue()
     end getMetaCheck:
     
+    on diagReportCheck:sender
+        set diagReport to sender's intValue()
+    end diagReportCheck:
+    
     on startItemsCheck:sender
         set startItems to sender's intValue()
     end startItemsCheck:
