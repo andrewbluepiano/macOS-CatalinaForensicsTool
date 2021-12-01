@@ -34,7 +34,7 @@ script ArtifactFinder
     property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while."
     property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
     property systStartItemTip : "Collects configurations for system wide startup items from:\n/Library/StartupItems/\n/System/Library/StartupItems/"
-    property diagreportTips : "This will gather the diagnostic reports on the system."
+    property diagreportTips : "This will gather the diagnostic reports on the system from:\n/Library/Logs/DiagnosticReports"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
