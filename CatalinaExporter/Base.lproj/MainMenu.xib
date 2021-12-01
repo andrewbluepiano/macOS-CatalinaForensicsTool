@@ -688,7 +688,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <value key="minSize" type="size" width="519" height="400"/>
             <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="513" height="400"/>
+                <rect key="frame" x="0.0" y="0.0" width="519" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V4o-q4-4at">
@@ -753,7 +753,7 @@
                         </connections>
                     </button>
                     <box borderType="none" title="Box" transparent="YES" id="7ah-rb-rQ3">
-                        <rect key="frame" x="74" y="256" width="369" height="144"/>
+                        <rect key="frame" x="77" y="256" width="369" height="144"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Dbs-BS-7pl">
                             <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
@@ -921,7 +921,31 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="getMetaTip" id="m07-Ca-TSP"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmz-at-xhV">
+                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-Nl-qxM">
+                        <rect key="frame" x="187" y="97" width="153" height="18"/>
+                        <buttonCell key="cell" type="check" title="System StartupItems" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h4L-Ac-1Bk">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="systStartItemsCheck:" target="Voe-Tx-rLC" id="ihR-TW-MSu"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systStartItemTip" id="Cd0-B4-BiP"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="systStartItems" id="jkE-GW-Y7Z"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rX8-Pc-bAi">
+                        <rect key="frame" x="187" y="124" width="118" height="18"/>
+                        <buttonCell key="cell" type="check" title="Crash Reporter" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ydk-Ih-KbK">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="crashReporterCheck:" target="Voe-Tx-rLC" id="FND-VX-dbh"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="crashReporterTip" id="3mL-xG-2Tb"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="crashReporter" id="hst-UC-ffW"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nmz-at-xhV">
                         <rect key="frame" x="187" y="146" width="143" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="r1Q-st-nbI"/>
@@ -936,33 +960,25 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="diagreportTips" id="Tlr-9a-Nsj"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-Nl-qxM">
-                        <rect key="frame" x="187" y="124" width="153" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="System StartupItems" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h4L-Ac-1Bk">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="systStartItemsCheck:" target="Voe-Tx-rLC" id="ihR-TW-MSu"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systStartItemTip" id="Cd0-B4-BiP"/>
-                            <binding destination="Voe-Tx-rLC" name="value" keyPath="systStartItems" id="jkE-GW-Y7Z"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="top" secondItem="V4o-q4-4at" secondAttribute="bottom" constant="6" id="1uN-Bt-5AU"/>
                     <constraint firstItem="0eb-Qi-gkm" firstAttribute="top" secondItem="Io8-wU-jqf" secondAttribute="bottom" constant="6" id="2Zx-Ne-Gij"/>
                     <constraint firstItem="lV0-cc-1hI" firstAttribute="top" secondItem="0eb-Qi-gkm" secondAttribute="bottom" constant="6" id="37P-Gn-MGR"/>
                     <constraint firstAttribute="trailing" secondItem="ny5-6q-5Q3" secondAttribute="trailing" constant="-3" id="6fv-li-l19"/>
+                    <constraint firstItem="rX8-Pc-bAi" firstAttribute="top" secondItem="Nmz-at-xhV" secondAttribute="bottom" constant="6" symbolic="YES" id="BoM-2Y-dYa"/>
                     <constraint firstItem="xlX-Uw-rfK" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="156" id="FTW-U8-rSn"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="leading" secondItem="Zto-hd-gT1" secondAttribute="leading" id="H6u-m9-kgd"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="top" secondItem="Zto-hd-gT1" secondAttribute="bottom" constant="6" symbolic="YES" id="ItJ-dC-w9D"/>
                     <constraint firstItem="5fk-7N-xBe" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="6" id="KnU-Tr-xKe"/>
                     <constraint firstItem="V4o-q4-4at" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="L9o-5Y-ttQ"/>
                     <constraint firstItem="V4o-q4-4at" firstAttribute="top" secondItem="ny5-6q-5Q3" secondAttribute="bottom" constant="55" id="LdM-S6-mxg"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="leading" secondItem="Eh8-Nl-qxM" secondAttribute="leading" id="MBR-0N-cBo"/>
                     <constraint firstAttribute="bottom" secondItem="5fk-7N-xBe" secondAttribute="bottom" constant="3" id="Ndj-by-CSl"/>
                     <constraint firstItem="Zto-hd-gT1" firstAttribute="top" secondItem="fBz-nj-S1h" secondAttribute="bottom" constant="7" id="Ot9-xP-rXa"/>
                     <constraint firstAttribute="trailing" secondItem="uTs-ms-dx6" secondAttribute="trailing" id="SOZ-iS-Jzl"/>
                     <constraint firstItem="0eb-Qi-gkm" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="41" id="Vqb-5V-Vhx"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="top" secondItem="Zto-hd-gT1" secondAttribute="bottom" constant="2" id="WIP-iO-ZwE"/>
                     <constraint firstItem="5Wg-6r-sId" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="XiF-2Y-nT2"/>
                     <constraint firstItem="Zto-hd-gT1" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="ZkO-Xd-Jg2"/>
                     <constraint firstItem="fBz-nj-S1h" firstAttribute="top" secondItem="xlX-Uw-rfK" secondAttribute="bottom" constant="1" id="c52-Gw-pn7"/>
@@ -976,6 +992,8 @@ DQ
                     <constraint firstAttribute="bottom" secondItem="uTs-ms-dx6" secondAttribute="bottom" id="rHG-9Q-fDE"/>
                     <constraint firstItem="xlX-Uw-rfK" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="u8X-Oa-h1r"/>
                     <constraint firstItem="uTs-ms-dx6" firstAttribute="leading" secondItem="5fk-7N-xBe" secondAttribute="trailing" constant="3" id="uCS-dK-pAu"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="leading" secondItem="rX8-Pc-bAi" secondAttribute="leading" id="uyN-4k-gNV"/>
+                    <constraint firstItem="Nmz-at-xhV" firstAttribute="trailing" secondItem="Zto-hd-gT1" secondAttribute="trailing" id="v77-pO-eyj"/>
                     <constraint firstItem="uTs-ms-dx6" firstAttribute="top" secondItem="HGF-c1-IMS" secondAttribute="bottom" constant="8" id="xsl-Mb-VfO"/>
                 </constraints>
             </view>

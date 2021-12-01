@@ -26,6 +26,7 @@ script ArtifactFinder
     property getMeta : false
     property diagReport : false
 	property systStartItems : false
+	property crashReporter : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -35,6 +36,7 @@ script ArtifactFinder
     property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
     property systStartItemTip : "Collects configurations for system wide startup items from:\n/Library/StartupItems/\n/System/Library/StartupItems/"
     property diagreportTips : "This will gather the diagnostic reports (crash logs) on the system from:\n/Library/Logs/DiagnosticReports"
+	property crashReporterTip : "Collects crash reports from:\n/Library/Application Support/CrashReporter"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -189,6 +191,17 @@ script ArtifactFinder
         end if
     end getDiagnosticReports
     
+    -- Get CrashReporter data
+    on getCrashReporter(crashReporter, outputLocation, shellPassword)
+        if crashReporter as boolean then
+            set fileLocation to outputLocation & "/CrashReporter"
+            set crashReporterTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            do shell script "mkdir " & fileLocation & " && cp -pr \"/Library/Application Support/CrashReporter\" " & fileLocation
+            timeStamp(outputLocation, "CrashReporter", crashReporterTime)
+        end if
+    end getCrashReporter
+    
     -- Time Stamp Function
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
@@ -218,6 +231,7 @@ script ArtifactFinder
         fsEventsParse(fsEvents, outputLocation, shellPassword)
         getMetaData(getMeta, outputLocation, shellPassword)
         getSystStartItems(systStartItems, outputLocation, shellPassword)
+        getCrashReporter(crashReporter, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -249,4 +263,8 @@ script ArtifactFinder
     on systStartItemsCheck:sender
         set systStartItems to sender's intValue()
     end systStartItemsCheck:
+    
+	on crashReporterCheck:sender
+        set crashReporter to sender's intValue()
+    end crashReporterCheck:
 end script
