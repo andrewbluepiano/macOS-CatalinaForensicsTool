@@ -24,8 +24,8 @@ script ArtifactFinder
     property instHist : false
     property fsEvents : false
     property getMeta : false
-    property startItems : false
     property diagReport : false
+	property systStartItems : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -33,7 +33,7 @@ script ArtifactFinder
     property instHistTip : "History of installed Applications and Updates"
     property fseventTip : "Exports the FSEvents data as a sqlite db from /.fseventsd/ using David Cowen's FSEventsParser\nhttps://github.com/dlcowen/FSEventsParser\nWARNING: This one takes a while."
     property getMetaTip : "Because spotlight databases are encrypted, and there is no known reversing method (Papers have been written on the topic).\n\nWe accomplish a backup of file metadata by recursively applying the 'MDLS' command. \n\nYou will be promted for the directory whose contents metadata you want to export."
-    property startItemTip : "items designated to load when you start your Mac"
+    property systStartItemTip : "Collects configurations for system wide startup items from:\n/Library/StartupItems/\n/System/Library/StartupItems/"
     property diagreportTips : "This will gather the diagnostic reports on the system."
  
     -- Runs when the 'choose output folder' button is pressed.
@@ -105,16 +105,20 @@ script ArtifactFinder
         end if
     end getInstallHist
     
-    -- Get Startup items function
-    on getStartItems(startItems, outputLocation, shellPassword)
-        if startItems as boolean then
-            set fileLocation to outputLocation & "StartupItems/"
-            set getStartItemsTime to current date
+    -- Get system startup items function
+    on getSystStartItems(systStartItems, outputLocation, shellPassword)
+        if systStartItems as boolean then
+			set fileLocationZero to outputLocation & "SystemStartupItems/"
+            set fileLocationOne to outputLocation & "SystemStartupItems/Library-StartupItems/"
+            set fileLocationTwo to outputLocation & "SystemStartupItems/System-Library-StartupItems/"
+            set getSystemStartItemsTime to current date
             -- p flag must be used for CP to keep metadata intact.
-            -- do shell script "mkdir " & fileLocation & " && cp -p -r /Library/StartupItems/ " & fileLocation
-            timeStamp(outputLocation, "InstallHistory.plist", getStartItemsTime)
+			do shell script "mkdir " & fileLocationZero & ""
+            do shell script "mkdir " & fileLocationOne & " && cp -p -r /Library/StartupItems/ " & fileLocationOne
+            do shell script "mkdir " & fileLocationTwo & " && cp -p -r /System/Library/StartupItems/ " & fileLocationTwo
+            timeStamp(outputLocation, "System StartupItems", getSystemStartItemsTime)
         end if
-    end getStartItems
+    end getSystStartItems
     
     -- Parse FS Events Function
     on fsEventsParse(fsEvents, outputLocation, shellPassword)
@@ -210,10 +214,10 @@ script ArtifactFinder
         systemProfile(sysInfo, outputLocation, shellPassword)
         getUnifLogs(unifLogs, outputLocation, shellPassword)
         getInstallHist(instHist, outputLocation, shellPassword)
-        getDiagnosticReports(true, outputLocation, shellPassword)
+        getDiagnosticReports(diagReport, outputLocation, shellPassword)
         fsEventsParse(fsEvents, outputLocation, shellPassword)
         getMetaData(getMeta, outputLocation, shellPassword)
-        getStartItems(startItems, outputLocation, shellPassword)
+        getSystStartItems(systStartItems, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -238,12 +242,11 @@ script ArtifactFinder
         set getMeta to sender's intValue()
     end getMetaCheck:
     
-    
     on diagReportCheck:sender
         set diagReport to sender's intValue()
     end diagReportCheck:
     
-    on startItemsCheck:sender
-        set startItems to sender's intValue()
-    end startItemsCheck:
+    on systStartItemsCheck:sender
+        set systStartItems to sender's intValue()
+    end systStartItemsCheck:
 end script
