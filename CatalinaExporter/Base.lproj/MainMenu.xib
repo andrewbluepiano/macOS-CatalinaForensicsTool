@@ -685,9 +685,9 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="513" height="400"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="519" height="400"/>
-            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="519" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -921,6 +921,21 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="getMetaTip" id="m07-Ca-TSP"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nmz-at-xhV">
+                        <rect key="frame" x="187" y="146" width="143" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="r1Q-st-nbI"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Diagnostic Reports" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bLu-xF-YJn">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="diagReportCheck:" target="Voe-Tx-rLC" id="0h3-7w-zzg"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="diagReport" id="xwX-xS-LBz"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="diagreportTips" id="Tlr-9a-Nsj"/>
+                        </connections>
+                    </button>
                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-Nl-qxM">
                         <rect key="frame" x="187" y="97" width="153" height="18"/>
                         <buttonCell key="cell" type="check" title="System StartupItems" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h4L-Ac-1Bk">
@@ -945,19 +960,17 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="crashReporter" id="hst-UC-ffW"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nmz-at-xhV">
-                        <rect key="frame" x="187" y="146" width="143" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="r1Q-st-nbI"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Diagnostic Reports" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bLu-xF-YJn">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjA-AB-g9z">
+                        <rect key="frame" x="360" y="178" width="131" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Launch Daemons" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Zh9-sE-mnA">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="diagReportCheck:" target="Voe-Tx-rLC" id="0h3-7w-zzg"/>
-                            <binding destination="Voe-Tx-rLC" name="value" keyPath="diagReport" id="xwX-xS-LBz"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="diagreportTips" id="Tlr-9a-Nsj"/>
+                            <action selector="launchDaemonCheck:" target="Voe-Tx-rLC" id="A3k-In-iIO"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="launchDaemonTip" id="7c8-3Y-cR0"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="launchDaemons" id="9tL-H7-VX8"/>
                         </connections>
                     </button>
                 </subviews>
