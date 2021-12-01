@@ -931,11 +931,6 @@ DQ
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="getMetaCheck:" target="Voe-Tx-rLC" id="R2C-Aj-eCv"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="getMetaTip" id="n0k-P3-Qa0"/>
-                            <binding destination="Voe-Tx-rLC" name="value" keyPath="getMeta" id="3Yd-ru-0i4"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
