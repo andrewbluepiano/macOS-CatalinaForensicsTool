@@ -13,7 +13,7 @@ script ArtifactFinder
 	-- Store these values for use in other method calls
 	property shellPassword : missing value
     property shellPasswordField : missing value
-    -- outputLocation is string of selected path plus CatalinaArtifacts/
+    -- outputLocation is string of selected path plus macOSArtifacts/
 	property outputLocation : missing value
     property outputLocationField : missing value
     property startTime : current date
@@ -50,7 +50,7 @@ script ArtifactFinder
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
-        set outputLocation to ((POSIX path of (choose folder with prompt "Please select an output folder:")) as string) & "CatalinaArtifacts/"
+        set outputLocation to ((POSIX path of (choose folder with prompt "Please select an output folder:")) as string) & "macOSArtifacts/"
         try
             do shell script "/bin/ls " & outputLocation
             display dialog "Existing export detected in that location. Please choose a new one. The program isnt smart enough to deal with this yet."
