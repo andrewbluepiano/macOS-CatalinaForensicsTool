@@ -228,15 +228,11 @@ script ArtifactFinder
     -- Get System Preferences Configuration files
     on getSystemPreferences(systemPreferences, outputLocation, shellPassword)
         if systemPreferences as boolean then
-            set fileLocationZero to outputLocation & "SystemPreferences/"
-            set fileLocationOne to outputLocation & "SystemPreferences/Library-Preferences-SystemConfiguration/"
-            set fileLocationTwo to outputLocation & "SystemPreferences/System-Library-LaunchDaemons/Library-Preferences-SystemConfiguration/
-            set getLaunchDaemonsTime to current date
+            set fileLocation to outputLocation & "SystemPreferences/"
+            set getsystemPreferenceTime to current date
             -- p flag must be used for CP to keep metadata intact.
-            do shell script "mkdir " & fileLocationZero & ""
-            do shell script "mkdir " & fileLocationOne & " && cp -p -r /Library/Preferences/SystemConfiguration/ " & fileLocationOne
-            do shell script "mkdir " & fileLocationTwo & " && cp -p -r /System/Library/Preferences/SystemConfiguration/ & fileLocationTwo
-            timeStamp(outputLocation, "System Preferences", getLaunchDaemonsTime)
+            do shell script "mkdir " & fileLocation & " && cp -p -r /Library/Preferences/SystemConfiguration/ " & fileLocation
+            timeStamp(outputLocation, "System Preferences", getsystemPreferenceTime)
         end if
     end getSystemPreferences
     
