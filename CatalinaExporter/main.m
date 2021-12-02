@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     [[NSBundle mainBundle] loadAppleScriptObjectiveCScripts];
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Disclaimer & Info"];
-    [alert setInformativeText:@"This app requires full disk access. Please enable it for the App in System Preferences.\n\nThis app is for easy information gathering only. It is intended to be run on a booted image of a logged in system, to which you have access to the password for the administrators password. \n\nAlso, as this entire application is a fight against Apple's normal application controls. Don't be shocked if somethings wonky."];
+    [alert setInformativeText:@"This app requires full disk access. Please enable it for the App in System Preferences.\n\nThis app is for easy information gathering only. It is intended to be run on a booted image of a logged in system, to which you have access to the password for the administrators password. \n\nAlso, as this entire application is a fight against Apple's normal application controls, don't be shocked if somethings wonky."];
     [alert addButtonWithTitle:@"Ok"];
     [alert runModal];
     ArtifactFinder *stuff = [[NSClassFromString(@"ArtifactFinder") alloc] init];
