@@ -31,6 +31,7 @@ script ArtifactFinder
 	property systemLaunchAgents : false
 	property sleepimage : false
 	property systemPreferences : false
+    property internetPlugins : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -45,6 +46,7 @@ script ArtifactFinder
 	property systemLaunchAgentsTip : "Collects system launch agent files from:\n/Library/LaunchAgents\n/System/Library/LaunchAgents"
 	property sleepimageTip : "Backs up the sleepimage file for the system from:\n/private/var/vm/sleepimage\n\nTHIS FILE MAY BE LARGE"
 	property systemPreferencesTip : "Collects System Configuration Preferences from: \n/Library/Preferences/SystemConfiguration"
+    property internetPluginsTips : "Collects Plugin information from: \n/Library/Internet Plugins"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -236,6 +238,17 @@ script ArtifactFinder
         end if
     end getSystemPreferences
     
+    -- Get Internet Plugin files
+    on getInternetPlugins(internetPlugins, outputLocation, shellPassword)
+        if internetPlugins as boolean then
+            set fileLocation to outputLocation & "InternetPlugins/"
+            set getinternetPluginsTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            do shell script "mkdir " & fileLocation & " && cp -p -r /Library/Internet\ Plug-Ins/ " & fileLocation
+            timeStamp(outputLocation, "Internet Plugins", getinternetPluginsTime)
+        end if
+    end getInternetPlugins
+    
     -- Get system wide launch agent files
     on getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
         if systemLaunchAgents as boolean then
@@ -295,6 +308,7 @@ script ArtifactFinder
         getLaunchDaemons(launchDaemons, outputLocation, shellPassword)
         getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
         getSystemPreferences(systemPreferences, outputLocation, shellPassword)
+        getInternetPlugins(internetPlugins, outputLocation, shellPassword)
         getSleepimage(sleepimage, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
@@ -343,6 +357,10 @@ script ArtifactFinder
 	on systemLaunchAgentsCheck:sender
         set systemLaunchAgents to sender's intValue()
     end systemLaunchAgentsCheck:
+    
+    on internetPluginsCheck:sender
+        set internetPlugins to sender's intValue()
+    end internetPluginsCheck:
     
 	on sleepimageCheck:sender
         set sleepimage to sender's intValue()
