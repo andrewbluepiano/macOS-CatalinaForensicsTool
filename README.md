@@ -18,9 +18,8 @@ If you are not prepared to debug any minor quirks / build failures from things i
 This is not indended to be a standard consumer / production app, as its operation violates many core traits of normal macOS app operation. It is not malicious in any way, just not something the average Jill/Joe should be messing around with in general. 
 
 #### Forensic Disclaimer:
-Ideally a forensic application would be able to run against an image of a system. Unfortunately, that is beyond my scope of immediate knowledge, and storage space, and would take significant time to develop and test. 
+This is a ongoing project, and should not be considered a completed product.  
 <br><br>
-This should be run on a cloned macOS Catalina system only. I doubt it would do anything if run on a target of an investigation that would invalidate the evidence gathered, but I can't speak to that, so I don't want anyone to be thinking that. 
 
 ## Future Functionality:
 * There might be more stuff available in the protected volumes that can be mounted with SIP disabled. 
@@ -41,9 +40,6 @@ xattr -cr CatalinaExporter.app
 ## Screenshot of Current (Release) State
 <img src="https://i.imgur.com/vWfg3XB.png" width="500" />
 
-
 ## Credits:
 * David Cowen's FSEventParser used for FSEvent Exporting: https://github.com/dlcowen/FSEventsParser <br>
 
-## Report:
-https://docs.google.com/document/d/1XVjKJRdYRwxtuPGhpO89HAI2LWikc-SAzo47MzJAyco/edit?usp=sharing
