@@ -28,6 +28,7 @@ script ArtifactFinder
 	property systStartItems : false
 	property crashReporter : false
 	property launchDaemons : false
+	property systemLaunchAgents : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -39,6 +40,8 @@ script ArtifactFinder
     property diagreportTips : "This will gather the diagnostic reports (crash logs) on the system from:\n/Library/Logs/DiagnosticReports"
 	property crashReporterTip : "Collects crash reports from:\n/Library/Application Support/CrashReporter"
 	property launchDaemonTip : "Collects system launch daemon files from:\n/Library/LaunchDaemons\n/System/Library/LaunchDaemons"
+	property systemLaunchAgentsTip : "Collects system launch agent files from:\n/Library/LaunchAgents\n/System/Library/LaunchAgents"
+	
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -219,6 +222,21 @@ script ArtifactFinder
         end if
     end getLaunchDaemons
     
+    -- Get system wide launch agent files
+    on getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
+        if systemLaunchAgents as boolean then
+			set fileLocationZero to outputLocation & "SystemLaunchAgents/"
+            set fileLocationOne to outputLocation & "SystemLaunchAgents/Library-LaunchAgents/"
+            set fileLocationTwo to outputLocation & "SystemLaunchAgents/System-Library-LaunchAgents/"
+            set getLaunchAgentsTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+			do shell script "mkdir " & fileLocationZero & ""
+            do shell script "mkdir " & fileLocationOne & " && cp -p -r /Library/LaunchAgents/ " & fileLocationOne
+            do shell script "mkdir " & fileLocationTwo & " && cp -p -r /System/Library/LaunchAgents/ " & fileLocationTwo
+            timeStamp(outputLocation, "System Launch Agents", getLaunchAgentsTime)
+        end if
+    end getSystemLaunchAgents
+    
     -- Time Stamp Function
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
@@ -250,6 +268,7 @@ script ArtifactFinder
         getSystStartItems(systStartItems, outputLocation, shellPassword)
         getCrashReporter(crashReporter, outputLocation, shellPassword)
         getLaunchDaemons(launchDaemons, outputLocation, shellPassword)
+        getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -289,4 +308,8 @@ script ArtifactFinder
     on launchDaemonCheck:sender
         set launchDaemons to sender's intValue()
     end launchDaemonCheck:
+    
+	on systemLaunchAgentsCheck:sender
+        set systemLaunchAgents to sender's intValue()
+    end systemLaunchAgentsCheck:
 end script

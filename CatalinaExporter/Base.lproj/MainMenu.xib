@@ -973,6 +973,19 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="launchDaemons" id="9tL-H7-VX8"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PRV-2d-oRs">
+                        <rect key="frame" x="360" y="151" width="117" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Launch Agents" bezelStyle="regularSquare" imagePosition="left" inset="2" id="J8b-xf-571">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="systemLaunchAgentsCheck:" target="Voe-Tx-rLC" id="nhR-Cy-ipp"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemLaunchAgentsTip" id="0tX-2w-j2e"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="systemLaunchAgents" id="Rfb-q1-ZWF"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="top" secondItem="V4o-q4-4at" secondAttribute="bottom" constant="6" id="1uN-Bt-5AU"/>
