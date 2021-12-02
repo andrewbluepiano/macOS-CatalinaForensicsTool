@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -685,10 +685,10 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="513" height="400"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1024" height="743"/>
             <value key="minSize" type="size" width="519" height="400"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="519" height="400"/>
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="513" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V4o-q4-4at">
@@ -707,7 +707,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Wg-6r-sId">
-                        <rect key="frame" x="13" y="20" width="135" height="32"/>
+                        <rect key="frame" x="13" y="20" width="136" height="32"/>
                         <buttonCell key="cell" type="push" title="Testing Function" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vwi-bu-7zl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -753,7 +753,7 @@
                         </connections>
                     </button>
                     <box borderType="none" title="Box" transparent="YES" id="7ah-rb-rQ3">
-                        <rect key="frame" x="77" y="256" width="369" height="144"/>
+                        <rect key="frame" x="73" y="256" width="369" height="144"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Dbs-BS-7pl">
                             <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
@@ -949,15 +949,15 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rX8-Pc-bAi">
-                        <rect key="frame" x="187" y="124" width="118" height="18"/>
+                        <rect key="frame" x="187" y="124" width="119" height="18"/>
                         <buttonCell key="cell" type="check" title="Crash Reporter" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ydk-Ih-KbK">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="crashReporterCheck:" target="Voe-Tx-rLC" id="FND-VX-dbh"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="crashReporterTip" id="3mL-xG-2Tb"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="crashReporter" id="hst-UC-ffW"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="crashReporterTip" id="3mL-xG-2Tb"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjA-AB-g9z">
@@ -982,8 +982,8 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="systemLaunchAgentsCheck:" target="Voe-Tx-rLC" id="nhR-Cy-ipp"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemLaunchAgentsTip" id="0tX-2w-j2e"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="systemLaunchAgents" id="Rfb-q1-ZWF"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemLaunchAgentsTip" id="0tX-2w-j2e"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiL-b7-fzm">
@@ -995,9 +995,17 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="sleepimageCheck:" target="Voe-Tx-rLC" id="5FC-7p-4Lf"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="sleepimageTip" id="epN-dr-7sp"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="sleepimage" id="Jdi-ZV-QCN"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="sleepimageTip" id="epN-dr-7sp"/>
                         </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5L-am-wml">
+                        <rect key="frame" x="360" y="97" width="148" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="System Preferences" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3LU-XN-qv0">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
                     </button>
                 </subviews>
                 <constraints>
@@ -1036,7 +1044,7 @@ DQ
                     <constraint firstItem="uTs-ms-dx6" firstAttribute="top" secondItem="HGF-c1-IMS" secondAttribute="bottom" constant="8" id="xsl-Mb-VfO"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="84.5" y="-109.5"/>
+            <point key="canvasLocation" x="307" y="-111"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="4BF-GU-JO6"/>
     </objects>
