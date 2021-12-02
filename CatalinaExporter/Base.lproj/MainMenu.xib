@@ -986,6 +986,19 @@ DQ
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="systemLaunchAgents" id="Rfb-q1-ZWF"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiL-b7-fzm">
+                        <rect key="frame" x="360" y="124" width="101" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Sleep Image" bezelStyle="regularSquare" imagePosition="left" inset="2" id="q37-Sa-Yne">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="sleepimageCheck:" target="Voe-Tx-rLC" id="5FC-7p-4Lf"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="sleepimageTip" id="epN-dr-7sp"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="sleepimage" id="Jdi-ZV-QCN"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io8-wU-jqf" firstAttribute="top" secondItem="V4o-q4-4at" secondAttribute="bottom" constant="6" id="1uN-Bt-5AU"/>

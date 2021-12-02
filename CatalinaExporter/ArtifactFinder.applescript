@@ -29,6 +29,8 @@ script ArtifactFinder
 	property crashReporter : false
 	property launchDaemons : false
 	property systemLaunchAgents : false
+	property sleepimage : false
+	
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -41,6 +43,7 @@ script ArtifactFinder
 	property crashReporterTip : "Collects crash reports from:\n/Library/Application Support/CrashReporter"
 	property launchDaemonTip : "Collects system launch daemon files from:\n/Library/LaunchDaemons\n/System/Library/LaunchDaemons"
 	property systemLaunchAgentsTip : "Collects system launch agent files from:\n/Library/LaunchAgents\n/System/Library/LaunchAgents"
+	property sleepimageTip : "Backs up the sleepimage file for the system from:\n/private/var/vm/sleepimage\n\nTHIS FILE MAY BE LARGE"
 	
  
     -- Runs when the 'choose output folder' button is pressed.
@@ -237,6 +240,17 @@ script ArtifactFinder
         end if
     end getSystemLaunchAgents
     
+    -- Get sleepimage file
+    on getSleepimage(sleepimage, outputLocation, shellPassword)
+        if sleepimage as boolean then
+            set fileLocation to outputLocation & "/Sleepimage"
+            set sleepimageTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            do shell script "mkdir " & fileLocation & " && cp -p /private/var/vm/sleepimage " & fileLocation & "" password shellPassword with administrator privileges
+            timeStamp(outputLocation, "sleepimage", sleepimageTime)
+        end if
+    end getSleepimage
+    
     -- Time Stamp Function
     on timeStamp(outputLocation, artName, artGetTime)
         -- display alert outputLocation
@@ -269,6 +283,7 @@ script ArtifactFinder
         getCrashReporter(crashReporter, outputLocation, shellPassword)
         getLaunchDaemons(launchDaemons, outputLocation, shellPassword)
         getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
+        getSleepimage(sleepimage, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
     
@@ -312,4 +327,8 @@ script ArtifactFinder
 	on systemLaunchAgentsCheck:sender
         set systemLaunchAgents to sender's intValue()
     end systemLaunchAgentsCheck:
+    
+	on sleepimageCheck:sender
+        set sleepimage to sender's intValue()
+    end sleepimageCheck:
 end script
