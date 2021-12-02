@@ -44,7 +44,7 @@ script ArtifactFinder
 	property launchDaemonTip : "Collects system launch daemon files from:\n/Library/LaunchDaemons\n/System/Library/LaunchDaemons"
 	property systemLaunchAgentsTip : "Collects system launch agent files from:\n/Library/LaunchAgents\n/System/Library/LaunchAgents"
 	property sleepimageTip : "Backs up the sleepimage file for the system from:\n/private/var/vm/sleepimage\n\nTHIS FILE MAY BE LARGE"
-	property systemPreferences : "Collects System Configuration Preferences from: \n/Library/Preferences/SystemConfiguration"
+	property systemPreferencesTip : "Collects System Configuration Preferences from: \n/Library/Preferences/SystemConfiguration"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
