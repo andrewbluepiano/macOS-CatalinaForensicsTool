@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -685,7 +685,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="513" height="400"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1024" height="743"/>
             <value key="minSize" type="size" width="519" height="400"/>
             <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="513" height="400"/>
@@ -707,7 +707,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Wg-6r-sId">
-                        <rect key="frame" x="13" y="20" width="135" height="32"/>
+                        <rect key="frame" x="13" y="20" width="136" height="32"/>
                         <buttonCell key="cell" type="push" title="Testing Function" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vwi-bu-7zl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -949,7 +949,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rX8-Pc-bAi">
-                        <rect key="frame" x="187" y="124" width="118" height="18"/>
+                        <rect key="frame" x="187" y="124" width="119" height="18"/>
                         <buttonCell key="cell" type="check" title="Crash Reporter" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ydk-Ih-KbK">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -1044,7 +1044,7 @@ DQ
                     <constraint firstItem="uTs-ms-dx6" firstAttribute="top" secondItem="HGF-c1-IMS" secondAttribute="bottom" constant="8" id="xsl-Mb-VfO"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="128" y="-118"/>
+            <point key="canvasLocation" x="383" y="-107"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="4BF-GU-JO6"/>
     </objects>

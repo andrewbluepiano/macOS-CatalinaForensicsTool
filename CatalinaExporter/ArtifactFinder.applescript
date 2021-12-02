@@ -30,7 +30,7 @@ script ArtifactFinder
 	property launchDaemons : false
 	property systemLaunchAgents : false
 	property sleepimage : false
-	
+	property systemPreferences : false
     
     -- ToolTips, Offer explanation of options when hovered over
     property sysTip : "This will gather the system information displayed in system profiler."
@@ -44,7 +44,7 @@ script ArtifactFinder
 	property launchDaemonTip : "Collects system launch daemon files from:\n/Library/LaunchDaemons\n/System/Library/LaunchDaemons"
 	property systemLaunchAgentsTip : "Collects system launch agent files from:\n/Library/LaunchAgents\n/System/Library/LaunchAgents"
 	property sleepimageTip : "Backs up the sleepimage file for the system from:\n/private/var/vm/sleepimage\n\nTHIS FILE MAY BE LARGE"
-	
+	property systemPreferences : "Collects System Configuration Preferences from: \n/Library/Preferences/SystemConfiguration"
  
     -- Runs when the 'choose output folder' button is pressed.
 	on setup:sender
@@ -225,6 +225,21 @@ script ArtifactFinder
         end if
     end getLaunchDaemons
     
+    -- Get System Preferences Configuration files
+    on getSystemPreferences(systemPreferences, outputLocation, shellPassword)
+        if systemPreferences as boolean then
+            set fileLocationZero to outputLocation & "SystemPreferences/"
+            set fileLocationOne to outputLocation & "SystemPreferences/Library-Preferences-SystemConfiguration/"
+            set fileLocationTwo to outputLocation & "SystemPreferences/System-Library-LaunchDaemons/Library-Preferences-SystemConfiguration/
+            set getLaunchDaemonsTime to current date
+            -- p flag must be used for CP to keep metadata intact.
+            do shell script "mkdir " & fileLocationZero & ""
+            do shell script "mkdir " & fileLocationOne & " && cp -p -r /Library/Preferences/SystemConfiguration/ " & fileLocationOne
+            do shell script "mkdir " & fileLocationTwo & " && cp -p -r /System/Library/Preferences/SystemConfiguration/ & fileLocationTwo
+            timeStamp(outputLocation, "System Preferences", getLaunchDaemonsTime)
+        end if
+    end getSystemPreferences
+    
     -- Get system wide launch agent files
     on getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
         if systemLaunchAgents as boolean then
@@ -283,6 +298,7 @@ script ArtifactFinder
         getCrashReporter(crashReporter, outputLocation, shellPassword)
         getLaunchDaemons(launchDaemons, outputLocation, shellPassword)
         getSystemLaunchAgents(systemLaunchAgents, outputLocation, shellPassword)
+        getSystemPreferences(systemPreferences, outputLocation, shellPassword)
         getSleepimage(sleepimage, outputLocation, shellPassword)
         display alert "Done"
     end mainStuff:
@@ -323,6 +339,10 @@ script ArtifactFinder
     on launchDaemonCheck:sender
         set launchDaemons to sender's intValue()
     end launchDaemonCheck:
+    
+    on systemPreferencesCheck:sender
+        set systemPreferences  to sender's intValue()
+    end systemPreferencesCheck:
     
 	on systemLaunchAgentsCheck:sender
         set systemLaunchAgents to sender's intValue()
