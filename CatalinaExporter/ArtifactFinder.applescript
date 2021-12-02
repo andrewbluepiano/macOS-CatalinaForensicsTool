@@ -244,7 +244,7 @@ script ArtifactFinder
             set fileLocation to outputLocation & "InternetPlugins/"
             set getinternetPluginsTime to current date
             -- p flag must be used for CP to keep metadata intact.
-            do shell script "mkdir " & fileLocation & " && cp -p -r /Library/Internet\ Plug-Ins/ " & fileLocation
+            do shell script "mkdir " & fileLocation & " && cp -p -r \"/Library/Internet/Plug-Ins/\" " & fileLocation
             timeStamp(outputLocation, "Internet Plugins", getinternetPluginsTime)
         end if
     end getInternetPlugins
