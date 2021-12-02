@@ -1002,10 +1002,15 @@ DQ
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5L-am-wml">
                         <rect key="frame" x="360" y="97" width="148" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="System Preferences" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3LU-XN-qv0">
+                        <buttonCell key="cell" type="check" title="System Preferences" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3LU-XN-qv0">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="systemPreferencesCheck:" target="Voe-Tx-rLC" id="C7d-Hi-pjk"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemPreferences" id="9Jw-o5-7j9"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="systemPreferences" id="yMq-gN-sEz"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
