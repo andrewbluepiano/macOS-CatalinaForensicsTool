@@ -1008,7 +1008,7 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="systemPreferencesCheck:" target="Voe-Tx-rLC" id="C7d-Hi-pjk"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemPreferences" id="9Jw-o5-7j9"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemPreferencesTip" id="G4U-rA-BE1"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="systemPreferences" id="yMq-gN-sEz"/>
                         </connections>
                     </button>
