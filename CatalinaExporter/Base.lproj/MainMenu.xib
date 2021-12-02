@@ -1008,8 +1008,21 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="systemPreferencesCheck:" target="Voe-Tx-rLC" id="C7d-Hi-pjk"/>
-                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemPreferencesTip" id="G4U-rA-BE1"/>
                             <binding destination="Voe-Tx-rLC" name="value" keyPath="systemPreferences" id="yMq-gN-sEz"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="systemPreferencesTip" id="G4U-rA-BE1"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAq-ln-059">
+                        <rect key="frame" x="39" y="72" width="122" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Internet Plugins" bezelStyle="regularSquare" imagePosition="left" inset="2" id="OJb-fX-pFf">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="internetPluginsCheck:" target="Voe-Tx-rLC" id="Por-qt-bFx"/>
+                            <binding destination="Voe-Tx-rLC" name="toolTip" keyPath="internetPluginsTips" id="v9c-Do-l5c"/>
+                            <binding destination="Voe-Tx-rLC" name="value" keyPath="internetPlugins" id="edA-1x-c7j"/>
                         </connections>
                     </button>
                 </subviews>
